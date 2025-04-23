@@ -3,36 +3,36 @@
     "title": "Dice Displacement",
     "version": "1.0.0",
     "compatibility": {
-      "minimum": "10",
-      "verified": "12"
+        "minimum": "10",
+        "verified": "12"
     },
     "relationships": {
-      "requires": [
-        {
-          "id": "dice-so-nice",
-          "type": "module"
-        }
-      ]
+        "requires": [
+            {
+                "id": "dice-so-nice",
+                "type": "module"
+            }
+        ]
     },
     "description": "A module that adds Displacement Map support to Dice So Nice, enhancing 3D dice with dynamic geometry effects.",
     "authors": [
-      {
-        "name": "YourName",
-        "discord": "YourDiscord#1234"
-      }
+        {
+            "name": "Bulboed",
+            "discord": "YourDiscord#1234"
+        }
     ],
     "scripts": [
-      "scripts/main.js",
-      "scripts/textures.json"
+        "scripts/main.js",
+        "scripts/textures.json"
     ],
     "languages": [
-      {
-        "lang": "en",
-        "name": "English",
-        "path": "lang/en.json"
-      }
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
     ],
-    "url": "https://github.com/YourUsername/Dice-Displacement",
-    "manifest": "https://github.com/YourUsername/Dice-Displacement/raw/main/module.json",
-    "download": "https://github.com/YourUsername/Dice-Displacement/raw/main/download/v1.0.0/dice-displacement.zip"
-  }
+    "url": "https://github.com/Arseniyb3/dice-displacement",
+    "manifest": "https://github.com/Arseniyb3/dice-displacement/blob/master/module.json",
+    "download": "https://github.com/Arseniyb3/dice-displacement/blob/master/module.json"
+}

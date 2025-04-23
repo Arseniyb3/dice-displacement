@@ -1,59 +1,151 @@
 Hooks.on('diceSoNiceReady', (dice3d) => {
-    // Регистрируем систему для Displacement Maps
-    dice3d.addSystem({ id: "displacement", name: "🔮 Displacement", group: "Dice Displacement" }, "default");
+    dice3d.addSystem({ id: "displacement", name: "🔮 Displacement", group: "Dice Displacement"
+    },
+    "default");
 
-    // Добавляем текстуру Displacement Map для d20
-    dice3d.addTexture("displacement-d20", {
-        name: "🔮 Displacement D20",
+    dice3d.addTexture("displacement-test",
+    {
+        name: "🔮 Displacement Test",
         composite: "multiply",
-        source: "modules/dice-displacement/textures/d20_displacement.webp",
-        bump: "modules/dice-displacement/textures/d20_displacement.bmp",
+        source: "modules/dice-displacement/textures/d20_eye.webp",
         displacementMap: "modules/dice-displacement/textures/d20_displacement.webp"
     });
 
-    // Добавляем текстуру Displacement Map для d6
-    dice3d.addTexture("displacement-d6", {
-        name: "🔮 Displacement D6",
-        composite: "multiply",
-        source: "modules/dice-displacement/textures/d6_displacement.webp",
-        bump: "modules/dice-displacement/textures/d6_displacement.bmp",
-        displacementMap: "modules/dice-displacement/textures/d6_displacement.webp"
-    });
-
-    // Добавляем пресет для d20 с Displacement Map
-    dice3d.addDicePreset({
-        type: "d20",
-        labels: [
-            '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'
-        ],
-        displacementMaps: ["modules/dice-displacement/textures/d20_displacement.webp"],
-        displacementScale: 0.1,
-        displacementBias: 0.0,
-        system: "displacement",
-        colorset: "displacement-default"
-    });
-
-    // Добавляем пресет для d6 с Displacement Map
-    dice3d.addDicePreset({
-        type: "d6",
-        labels: ['1', '2', '3', '4', '5', '6'],
-        displacementMaps: ["modules/dice-displacement/textures/d6_displacement.webp"],
-        displacementScale: 0.1,
-        displacementBias: 0.0,
-        system: "displacement",
-        colorset: "displacement-default"
-    });
-
-    // Регистрируем цветовую схему
     dice3d.addColorset({
-        name: 'displacement-default',
+        name: "displacement-default",
         description: "🔮 Displacement Default",
         category: "Dice Displacement",
-        foreground: '#ffffff',
-        background: '#000000',
-        outline: '#ffffff',
-        texture: ['displacement-d20', 'displacement-d6'],
-        material: 'plastic'
+        foreground: "#ffffff",
+        background: "#808080", 
+        outline: "#ffffff",
+        edge: "#ffffff",
+        texture: "displacement-test",
+        material: "plastic",
+        font: "Arial",
+        visibility: "visible"
+    },
+    "default");
+
+
+    const diceTypes = [
+        { type: "d2", labels: [
+                "1",
+                "2"
+            ]
+        },
+        { type: "d4", labels: [
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        },
+        { type: "d6", labels: [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+            ]
+        },
+        { type: "d8", labels: [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8"
+            ]
+        },
+        { type: "d10", labels: [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ]
+        },
+        { type: "d100", labels: [
+                "10",
+                "20",
+                "30",
+                "40",
+                "50",
+                "60",
+                "70",
+                "80",
+                "90",
+                "00"
+            ]
+        },
+        { type: "d12", labels: [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+            ]
+        },
+        {
+            type: "d20",
+            labels: [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20"
+            ]
+        },
+        { type: "df", labels: [
+                "−",
+                " ",
+                "+"
+            ]
+        }
+    ];
+
+    // Добавляем пресеты
+    diceTypes.forEach((dice) => {
+        dice3d.addDicePreset({
+            type: dice.type,
+            labels: dice.labels,
+            displacementMaps: [
+                "modules/dice-displacement/textures/d20_displacement.webp"
+            ],
+            displacementScale: 0.6, 
+            displacementBias: 0.0,
+            system: "displacement",
+            colorset: "displacement-default"
+        });
     });
 });
